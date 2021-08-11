@@ -163,6 +163,10 @@ namespace AZ
                 return CreatePass<PassType>(passDescriptor);
             }
 
+            //! Added by RenderJoy.
+            //! Removes a PassTemplate from the library, by name.
+            virtual void RemovePassTemplate(const Name& name) = 0;
+
             //! Registers a PassCreator with the PassFactory
             virtual void AddPassCreator(Name className, PassCreator createFunction) = 0;
 

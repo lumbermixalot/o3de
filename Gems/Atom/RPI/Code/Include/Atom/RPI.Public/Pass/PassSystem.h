@@ -100,6 +100,9 @@ namespace AZ
             void UnregisterPass(Pass* pass) override;
             AZStd::vector<Pass*> FindPasses(const PassFilter& passFilter) const override;
 
+            void RemovePassTemplate(const Name& name) override; // Added by RenderJoy
+
+
         private:
             // Returns the root of the pass tree hierarchy
             const Ptr<ParentPass>& GetRootPass() override;

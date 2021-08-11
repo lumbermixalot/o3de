@@ -1,0 +1,6 @@
+<download name="RenderImageDemo" type="Map">
+ <index src="filelist.xml" dest="filelist.xml"/>
+ <files>
+  <file src="level.pak" dest="level.pak" size="544" md5="e833bf78ce52d5da6551b9318e414fde"/>
+ </files>
+</download>

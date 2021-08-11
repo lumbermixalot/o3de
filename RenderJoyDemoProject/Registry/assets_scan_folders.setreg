@@ -1,0 +1,14 @@
+{
+    "Amazon":
+    {
+        "RenderJoyDemoProject.Assets":
+        {
+            "SourcePaths":
+            [
+                "Assets",
+                "ShaderLib",
+                "Shaders"
+            ]
+        }
+    }
+}
