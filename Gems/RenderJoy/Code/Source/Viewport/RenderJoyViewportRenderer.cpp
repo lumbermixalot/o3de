@@ -19,7 +19,6 @@
 #include <AtomCore/Instance/InstanceDatabase.h>
 
 #include <Atom/RHI/RHISystemInterface.h>
-#include <Atom/RHI.Reflect/CpuTimingStatistics.h>
 
 #include <Atom/RPI.Public/WindowContext.h>
 #include <Atom/RPI.Public/Pass/Specific/SwapChainPass.h>
@@ -31,8 +30,6 @@
 #include <Atom/RPI.Public/View.h>
 #include <Atom/RPI.Public/Culling.h>
 #include <Atom/RPI.Public/Pass/PassSystem.h>
-
-//#include <RenderJoy/Viewport/RenderJoyViewportRequestBus.h>
 
 #include "RenderJoyViewportRenderer.h"
 
