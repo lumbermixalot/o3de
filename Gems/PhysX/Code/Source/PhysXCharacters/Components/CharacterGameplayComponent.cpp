@@ -213,7 +213,7 @@ namespace PhysX
     // CharacterGameplayComponent
     void CharacterGameplayComponent::ApplyGravity(float deltaTime)
     {
-        if (IsOnGround())
+        if (IsOnGround() && (m_fallingVelocity.GetZ() <= 0.0f))
         {
             m_fallingVelocity = AZ::Vector3::CreateZero();
             return;
