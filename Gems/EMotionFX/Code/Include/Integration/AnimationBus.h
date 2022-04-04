@@ -33,6 +33,10 @@ namespace EMotionFX
         public:
             static const AZ::EBusHandlerPolicy HandlerPolicy = AZ::EBusHandlerPolicy::Single;
             static const AZ::EBusAddressPolicy AddressPolicy = AZ::EBusAddressPolicy::Single;
+
+            // Added by Bone Marrow
+            virtual void SetGlobalSimulationSpeed(float speedFactor) = 0;
+
         };
         using SystemRequestBus = AZ::EBus<SystemRequests>;
 
