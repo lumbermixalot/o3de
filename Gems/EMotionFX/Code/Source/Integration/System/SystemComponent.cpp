@@ -395,8 +395,11 @@ namespace EMotionFX
             AZ::BehaviorContext* behaviorContext = azrtti_cast<AZ::BehaviorContext*>(context);
             if (behaviorContext)
             {
-                behaviorContext->EBus<SystemRequestBus>("SystemRequestBus")
-                ;
+                behaviorContext->EBus<SystemRequestBus>("CharacterSystemRequestBus")
+                    ->Attribute(AZ::Script::Attributes::Scope, AZ::Script::Attributes::ScopeFlags::Common)
+                    ->Attribute(AZ::Script::Attributes::Module, "character")
+                    ->Event("SetGlobalSimulationSpeed", &SystemRequestBus::Events::SetGlobalSimulationSpeed)
+                    ;
 
                 behaviorContext->EBus<SystemNotificationBus>("SystemNotificationBus")
                 ;
@@ -601,6 +604,15 @@ namespace EMotionFX
             gEnv = nullptr;
 #endif
         }
+
+        ////////////////////////////////////////////////////////////////////////
+        // SystemRequestBus::Handler
+        // Added by Bone Marrow
+        void SystemComponent::SetGlobalSimulationSpeed(float speedFactor)
+        {
+            GetEMotionFX().SetGlobalSimulationSpeed(speedFactor);
+        }
+        ////////////////////////////////////////////////////////////////////////
 
         //////////////////////////////////////////////////////////////////////////
         void SystemComponent::OnTick(float delta, [[maybe_unused]]AZ::ScriptTimePoint timePoint)
