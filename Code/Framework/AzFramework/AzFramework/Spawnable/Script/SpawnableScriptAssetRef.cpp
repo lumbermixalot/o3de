@@ -110,6 +110,11 @@ namespace AzFramework::Scripts
         return m_asset;
     }
 
+    bool SpawnableScriptAssetRef::IsValid() const
+    {
+        return m_asset.GetId().IsValid();
+    }
+
     void SpawnableScriptAssetRef::OnSpawnAssetChanged()
     {
         SetAsset(m_asset);
