@@ -99,6 +99,11 @@ namespace AZ
             {
                 Attach(configuration.m_targetId, configuration.m_targetBoneName.c_str(), configuration.m_targetOffset);
             }
+            else
+            {
+                m_targetBoneName = configuration.m_targetBoneName;
+                m_targetOffset = configuration.m_targetOffset;
+            }
 
             LmbrCentral::AttachmentComponentRequestBus::Handler::BusConnect(m_ownerId);
         }
