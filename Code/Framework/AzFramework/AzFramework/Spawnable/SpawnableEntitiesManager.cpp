@@ -529,10 +529,12 @@ namespace AzFramework
                 // a new set are not added so it no longer holds exactly the number of entities.
                 ticket.m_loadAll = spawnedEntitiesInitialCount == 0;
 
+                bool isTicketActive = ticket.m_referenceCount > 0;
+
                 auto newEntitiesBegin = ticket.m_spawnedEntities.begin() + spawnedEntitiesInitialCount;
                 auto newEntitiesEnd = ticket.m_spawnedEntities.end();
                 // Let other systems know about newly spawned entities for any pre-processing before adding to the scene/game context.
-                if (request.m_preInsertionCallback)
+                if (isTicketActive && request.m_preInsertionCallback)
                 {
                     request.m_preInsertionCallback(request.m_ticketId, SpawnableEntityContainerView(newEntitiesBegin, newEntitiesEnd));
                 }
@@ -546,7 +548,7 @@ namespace AzFramework
                 }
 
                 // Let other systems know about newly spawned entities for any post-processing after adding to the scene/game context.
-                if (request.m_completionCallback)
+                if (isTicketActive && request.m_completionCallback)
                 {
                     request.m_completionCallback(request.m_ticketId, SpawnableConstEntityContainerView(newEntitiesBegin, newEntitiesEnd));
                 }
