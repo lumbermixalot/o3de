@@ -12,6 +12,7 @@
 #include <AzCore/RTTI/BehaviorContext.h>
 #include <AzCore/Serialization/SerializeContext.h>
 #include <AzFramework/Physics/Common/PhysicsSimulatedBody.h>
+#include <AzFramework/Physics/Shape.h>
 
 namespace AzPhysics
 {
@@ -38,6 +39,8 @@ namespace AzPhysics
                 ->Attribute(AZ::Script::Attributes::Category, "Physics")
                 ->Method("GetTriggerEntityId", &TriggerEvent::GetTriggerEntityId)
                 ->Method("GetOtherEntityId", &TriggerEvent::GetOtherEntityId)
+                ->Method("GetTriggerTag", &TriggerEvent::GetTriggerTag)
+                ->Method("GetOtherTag", &TriggerEvent::GetOtherTag)
                 ;
         }
     }
@@ -58,6 +61,24 @@ namespace AzPhysics
             return m_otherBody->GetEntityId();
         }
         return AZ::EntityId();
+    }
+
+    AZ::Crc32 TriggerEvent::GetTriggerTag() const
+    {
+        if (m_triggerShape)
+        {
+            return m_triggerShape->GetTag();
+        }
+        return {};
+    }
+
+    AZ::Crc32 TriggerEvent::GetOtherTag() const
+    {
+        if (m_otherShape)
+        {
+            return m_otherShape->GetTag();
+        }
+        return {};
     }
 
     /*static*/ void Contact::Reflect(AZ::ReflectContext* context)
