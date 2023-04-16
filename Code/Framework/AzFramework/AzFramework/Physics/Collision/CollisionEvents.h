@@ -54,6 +54,8 @@ namespace AzPhysics
         // helpers for reflecting to behaviour context
         AZ::EntityId GetTriggerEntityId() const;
         AZ::EntityId GetOtherEntityId() const;
+        AZ::Crc32 GetTriggerTag() const;
+        AZ::Crc32 GetOtherTag() const;
     };
     using TriggerEventList = AZStd::vector<TriggerEvent>;
 
