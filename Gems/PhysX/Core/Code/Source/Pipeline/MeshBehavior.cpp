@@ -142,7 +142,9 @@ namespace PhysX
 
         AZ::SceneAPI::Events::ProcessingResult MeshBehavior::BuildDefault(AZ::SceneAPI::Containers::Scene& scene) const
         {
-            if (!AZ::SceneAPI::Utilities::DoesSceneGraphContainDataLike<AZ::SceneAPI::DataTypes::IMeshData>(scene, true))
+            //! GALIB: The correct logic should be to search for at least one node of type IMeshData and such node matches
+            //! the virtual type "PhysicsMesh".
+            if (!AZ::SceneAPI::Utilities::DoesSceneGraphContainDataLike<AZ::SceneAPI::DataTypes::IMeshData>(scene, false /*GALIB was true*/))
             {
                 return AZ::SceneAPI::Events::ProcessingResult::Ignored;
             }
